@@ -1,0 +1,14 @@
+- name: Install Grafana on Ubuntu
+  hosts: all
+  become: true
+  task:
+    - name: Install Grafana Agent Flow
+      ansible.builtin.include_role:
+        name: grafana.grafana.grafana_agent
+        
+      vars:
+        grafana_agent_mode: flow
+        grafana_agent_config_filename: config.river
+        grafana_agent_provisioned_config_file: /usr/local/etc/grafana/grafana.ini
+        grafana_agent_flags_extra:
+          server.http.listen-addr: '  
